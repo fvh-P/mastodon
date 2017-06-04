@@ -3,13 +3,13 @@ import ColumnSettings from '../components/column_settings';
 import { changeSetting, saveSettings } from '../../../actions/settings';
 
 const mapStateToProps = state => ({
-  settings: state.getIn(['settings', 'community']),
+  settings: state.getIn(['settings', 'home']),
 });
 
 const mapDispatchToProps = dispatch => ({
 
   onChange (key, checked) {
-    dispatch(changeSetting(['community', ...key], checked));
+    dispatch(changeSetting(['home', ...key], checked));
   },
 
   onSave () {

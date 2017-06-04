@@ -38,6 +38,12 @@ const initialState = Immutable.Map({
       mention: true,
     }),
   }),
+  
+  community: Immutable.Map({
+    regex: Immutable.Map({
+      body: '',
+    }),
+  }),
 });
 
 export default function settings(state = initialState, action) {
