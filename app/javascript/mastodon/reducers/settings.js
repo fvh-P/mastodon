@@ -44,6 +44,12 @@ const initialState = Immutable.Map({
       body: '',
     }),
   }),
+  
+  public: Immutable.Map({
+    regex: Immutable.Map({
+      body: '',
+    }),
+  }),
 });
 
 export default function settings(state = initialState, action) {

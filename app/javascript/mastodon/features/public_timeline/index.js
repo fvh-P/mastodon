@@ -11,7 +11,8 @@ import {
   disconnectTimeline,
 } from '../../actions/timelines';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import ColumnBackButtonSlim from '../../components/column_back_button_slim';
+import ColumnBackButtonVerySlim from '../../components/column_back_button_very_slim';
+import ColumnSettingsContainer from './containers/column_settings_container';
 import createStream from '../../stream';
 
 const messages = defineMessages({
@@ -86,6 +87,7 @@ class PublicTimeline extends React.PureComponent {
     return (
       <Column icon='globe' active={hasUnread} heading={intl.formatMessage(messages.title)}>
         <ColumnBackButtonSlim />
+        <ColumnSettingsContainer />
         <StatusListContainer {...this.props} type='public' scrollKey='public_timeline' emptyMessage={<FormattedMessage id='empty_column.public' defaultMessage='There is nothing here! Write something publicly, or manually follow users from other instances to fill it up' />} />
       </Column>
     );

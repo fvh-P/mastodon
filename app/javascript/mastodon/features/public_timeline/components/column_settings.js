@@ -7,8 +7,8 @@ import SettingToggle from '../../notifications/components/setting_toggle';
 import SettingText from './setting_text';
 
 const messages = defineMessages({
-  filter_regex: { id: 'community.column_settings.filter_regex', defaultMessage: 'Filter out by regular expressions' },
-  settings: { id: 'community.settings', defaultMessage: 'Column settings' },
+  filter_regex: { id: 'public.column_settings.filter_regex', defaultMessage: 'Filter out by regular expressions' },
+  settings: { id: 'public.settings', defaultMessage: 'Column settings' },
 });
 
 class ColumnSettings extends React.PureComponent {
@@ -26,7 +26,7 @@ class ColumnSettings extends React.PureComponent {
     return (
       <ColumnCollapsable icon='sliders' title={intl.formatMessage(messages.settings)} fullHeight={100} onCollapse={onSave}>
         <div className='column-settings__outer'>
-          <span className='column-settings__section'><FormattedMessage id='community.column_settings.advanced' defaultMessage='Advanced' /></span>
+          <span className='column-settings__section'><FormattedMessage id='public.column_settings.advanced' defaultMessage='Advanced' /></span>
 
           <div className='column-settings__row'>
             <SettingText settings={settings} settingKey={['regex', 'body']} onChange={onChange} label={intl.formatMessage(messages.filter_regex)} />
