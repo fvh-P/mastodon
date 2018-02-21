@@ -1194,17 +1194,30 @@
 
 .account-authorize {
   padding: 14px 10px;
+  display: flex;
 
   .detailed-status__display-name {
     display: block;
     margin-bottom: 15px;
     overflow: hidden;
+    flex: 1 1 auto;
   }
 }
 
 .account-authorize__avatar {
   float: left;
   margin-right: 10px;
+}
+
+.account-authorize__follow-icon {
+  padding: 20px;
+  font-size: 22px;
+  white-space: nowrap;
+  color: lighten($ui-base-color, 33%);
+
+  &.active {
+    color: $ui-highlight-color;
+  }
 }
 
 .status__display-name,

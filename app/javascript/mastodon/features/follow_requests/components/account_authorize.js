@@ -35,6 +35,9 @@ export default class AccountAuthorize extends ImmutablePureComponent {
             <DisplayName account={account} />
           </Permalink>
 
+          <div className='account-authorize__follow-icon'>
+            <i className='fa fa-fw fa-user-plus' />
+          </div>
           <div className='account__header__content' dangerouslySetInnerHTML={content} />
         </div>
 
