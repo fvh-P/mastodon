@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import Permalink from '../../../components/permalink';
+import AccountRelationshipButtonContainer from '../../../containers/account_relationship_button_container';
 import Avatar from '../../../components/avatar';
 import DisplayName from '../../../components/display_name';
 import IconButton from '../../../components/icon_button';
@@ -27,6 +28,10 @@ export default class AccountAuthorize extends ImmutablePureComponent {
     const { intl, account, onAuthorize, onReject } = this.props;
     const content = { __html: account.get('note_emojified') };
 
+    if (!account) {
+      return <div />;
+    }
+
     return (
       <div className='account-authorize__wrapper'>
         <div className='account-authorize'>
@@ -35,8 +40,8 @@ export default class AccountAuthorize extends ImmutablePureComponent {
             <DisplayName account={account} />
           </Permalink>
 
-          <div className='account-authorize__follow-icon'>
-            <i className='fa fa-fw fa-user-plus' />
+          <div className='account-authorize__relationship'>
+            <AccountRelationshipButtonContainer id={account.get('id')} />
           </div>
           <div className='account__header__content' dangerouslySetInnerHTML={content} />
         </div>

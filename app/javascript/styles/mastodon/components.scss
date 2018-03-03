@@ -1209,15 +1209,10 @@
   margin-right: 10px;
 }
 
-.account-authorize__follow-icon {
+.account-authorize__relationship {
   padding: 20px;
   font-size: 22px;
   white-space: nowrap;
-  color: lighten($ui-base-color, 33%);
-
-  &.active {
-    color: $ui-highlight-color;
-  }
 }
 
 .status__display-name,
