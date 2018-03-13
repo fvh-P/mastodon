@@ -24,9 +24,38 @@ export default class AccountAuthorize extends ImmutablePureComponent {
     intl: PropTypes.object.isRequired,
   };
 
+  state = {
+    requestState: 'requested',
+  };
+
+  onClickAuthorize = () => {
+    this.props.onAuthorize();
+    this.setState({
+      requestState: 'authorized',
+    });
+  }
+
+  onClickReject = () => {
+    this.props.onReject();
+    this.setState({
+      requestState: 'rejected',
+    });
+  }
+
   render () {
-    const { intl, account, onAuthorize, onReject } = this.props;
+    const { intl, account } = this.props;
+    const { requestState } = this.state;
     const content = { __html: account.get('note_emojified') };
+
+    const accountPanel = () => {
+      const disabled = requestState !== 'requested';
+      return (
+        <div className='account--panel'>
+          <IconButton className={`account--panel__button ${requestState === 'authorized' ? requestState : ''}`} title={intl.formatMessage(messages.authorize)} icon='check' onClick={this.onClickAuthorize} disabled={disabled} />
+          <IconButton className={`account--panel__button ${requestState === 'rejected' ? requestState : ''}`} title={intl.formatMessage(messages.reject)} icon='times' onClick={this.onClickReject} disabled={disabled} />
+        </div>
+      );
+    };
 
     if (!account) {
       return <div />;
@@ -46,10 +75,7 @@ export default class AccountAuthorize extends ImmutablePureComponent {
           <div className='account__header__content' dangerouslySetInnerHTML={content} />
         </div>
 
-        <div className='account--panel'>
-          <div className='account--panel__button'><IconButton title={intl.formatMessage(messages.authorize)} icon='check' onClick={onAuthorize} /></div>
-          <div className='account--panel__button'><IconButton title={intl.formatMessage(messages.reject)} icon='times' onClick={onReject} /></div>
-        </div>
+        {accountPanel()}
       </div>
     );
   }

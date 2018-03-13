@@ -56,9 +56,9 @@ export default class FollowRequests extends ImmutablePureComponent {
   }
 
   render () {
-    const { intl } = this.props;
+    const { intl, accountIds } = this.props;
 
-    if (!this.props.accountIds) {
+    if (!accountIds) {
       return (
         <Column>
           <LoadingIndicator />
@@ -72,9 +72,9 @@ export default class FollowRequests extends ImmutablePureComponent {
 
         <ScrollContainer scrollKey='follow_requests'>
           <div className='scrollable' onScroll={this.handleScroll}>
-            {this.state.accountIds.map(id =>
+            {this.state.accountIds ? this.state.accountIds.map(id =>
               <AccountAuthorizeContainer key={id} id={id} />
-            )}
+            ) : null}
           </div>
         </ScrollContainer>
       </Column>

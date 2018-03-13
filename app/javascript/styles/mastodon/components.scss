@@ -2678,6 +2678,14 @@
 .detailed-status__button {
   flex: 1 1 auto;
   text-align: center;
+
+  &.authorized {
+    color: $ui-highlight-color;
+  }
+
+  &.rejected {
+    color: $error-value-color;
+  }
 }
 
 .column-settings__outer {
